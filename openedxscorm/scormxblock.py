@@ -510,6 +510,8 @@ class ScormXBlock(XBlock, CompletableXBlockMixin):
                     completion_status = "completed"
             elif lesson_status in ["completed", "incomplete"]:
                 completion_status = lesson_status
+            if completion_status == "completed" and lesson_score is None:
+                lesson_score = 1.0
         elif name == "cmi.success_status":
             success_status = value
         elif name == "cmi.completion_status":
